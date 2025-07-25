@@ -1,1 +1,70 @@
 @import "tailwindcss";
+
+:root {
+  /* Base colors*/
+  --color-bg: #f9fafb;
+  --color-text: #1f2937;
+  --color-subtle: #4b5563;
+  --color-border: rgba(75, 85, 99, 0.3);
+  --color-yellow-500: #eab308;
+  --color-highlight: #eab308;
+  
+
+  /* Buttons, pills, links */
+  --color-bg-pill: #f3f4f6;           /* gray-100 */
+  --color-border-pill: #d1d5db;       /* gray-300 */
+  --color-link: var(--color-text);   /* default link color */
+  --color-link-hover: #ffffff;
+
+  --color-bg-pill-hover: #111827;     /* gray-900 */
+  --color-border-pill-hover: #374151; /* gray-700 */
+  --color-bg-pill-active: #000000;
+
+  /* Navbar animation background + border */
+  --color-nav-bg-animated: rgba(255, 255, 255, 0.5); /* light mode */
+  --color-nav-border: rgba(0, 0, 0, 0.1);
+  --color-theme-option-hover-bg: #e5e7eb;      /* gray-200 */
+  --color-theme-option-hover-text: #1f2937;
+
+  /* Badge colors (green theme) */
+  --color-badge-text: #166534;         /* green-800 */
+  --color-badge-bg: #dcfce7;           /* green-100 */
+  --color-badge-gradient-start: #51E4B8;
+  --color-badge-gradient-middle: #21554E;
+  --color-badge-gradient-end: #51E4B8;
+}
+
+html {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Onest Variable', system-ui, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+html.dark {
+  --color-bg: #111827;
+  --color-text: #ffffff;
+  --color-subtle: #d1d5db;
+  --color-yellow-500: #facc15;
+  --color-yellow-200: #fde68a;
+  --color-highlight: #fde68a;
+
+  --color-bg-pill: #1f2937;           /* gray-800 */
+  --color-border-pill: #4b5563;       /* gray-600 */
+  --color-link: #ffffff;
+  --color-link-hover: #000000;
+
+  --color-bg-pill-hover: #f3f4f6;     /* gray-100 */
+  --color-border-pill-hover: #d1d5db; /* gray-300 */
+  --color-bg-pill-active: #f9fafb;    /* gray-50 */
+
+  /* Navbar animation background + border for dark mode */
+  --color-nav-bg-animated: rgba(31, 41, 55, 0.9); /* gray-800/90 */
+  --color-nav-border: rgba(255, 255, 255, 0.1);
+  --color-theme-option-hover-bg: #374151;      /* gray-700 */
+  --color-theme-option-hover-text: #f3f4f6; 
+
+  /* Badge colors for dark mode */
+  --color-badge-text: #a7f3d0;          /* green-200 */
+  --color-badge-bg: #0c2725;            /* green-100 */
+}

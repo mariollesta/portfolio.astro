@@ -1,0 +1,34 @@
+---
+const personalImageAlt = "Mario Llesta"
+---
+
+<article class="flex flex-col items-center justify-center gap-8 text-[var(--color-subtle)] md:flex-row">
+    <div
+        class="[&>p]:mb-4 [&>p>strong]:text-[var(--color-yellow-500)] [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+    >
+        <p>
+            Me llamo Mario pero puedes llamarme mllestadev. Empecé en la
+            programación durante mi etapa universitaria, en la que me
+            <strong>gradué en el Grado en Ingeniería en Tecnologías de Telecomunicación</strong>.
+        </p>
+
+        <p>
+            Actualmente trabajo en una consultora
+            <strong>automatizando el QA de las web principales de Meliá Hotels International</strong>. También he desempeñado roles como administrador de sistemas linux en una empresa de ciberseguridad y como desarrollador software.
+        </p>
+
+        <p>
+            Como desarollador web, mi objetivo es crear aplicaciones 
+            <strong>usables y accesibles</strong>, con un enfoque en la experiencia del usuario.  
+        </p>
+    </div>
+
+    <img
+        width="200"
+        height="200"
+        src="/me_ghibli.webp"
+        alt={personalImageAlt}
+        class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-[var(--color-img-bg)] ring-1 ring-[var(--color-img-ring)]"
+        style="object-position: 50% 50%;"
+    />
+</article>

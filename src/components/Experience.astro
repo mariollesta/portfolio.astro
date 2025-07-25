@@ -1,0 +1,45 @@
+---
+import ExperienceItem from "@/components/ExperienceItem.astro";
+
+const EXPERIENCE = [
+    {
+        date: "Marzo 2025 - Actualmente...",
+        title: "QA Engineer",
+        company: "knowmad mood",
+        description:
+        "Como parte del equipo de QA en Meliá, he contribuido a la fiabilidad de melia.com y meliaPro.com. Me especializo en el diseño y la automatización de pruebas end-to-end y de integración con Playwright (TypeScript), asegurando la calidad de las funcionalidades clave y el contenido hotelero.",
+        link: "",
+    },
+    {
+        date: "Julio 2024 - Marzo 2025",
+        title: "Software QA Engineer",
+        company: "OpenNAC Enterprise by Cipherbit (Grupo Oesía)",
+        description:
+        "Diseño y ejecución de pruebas manuales y automatizadas, desarrollo de pruebas E2E y API basadas en Playwright y mejora de CI/CD con Jenkins.",
+    },
+    {
+        date: "Septiembre 2022 - Julio 2024",
+        title: "Professional Services Specialist",
+        company: "OpenNAC Enterprise by Cipherbit (Grupo Oesía)",
+        description:
+        "Participé en la implementación del proyecto OpenNAC/EMMA, gestionando sistemas Linux, bases de datos, automatización con Ansible y análisis de logs con Elasticsearch.",
+    },
+    {
+        date: "Febrero 2022 - Junio 2024",
+        title: "Solutions Analyst Internship",
+        company: "NTT DATA Europe & LATAM",
+        description:
+        "Desarrollo de soluciones basadas en IA utilizando Java, Spring Boot y arquitecturas en contenedores.",
+    },
+]
+---
+
+<ol class="relative mt-16">
+    {
+        EXPERIENCE.map((experience) => (
+            <li class="">
+                <ExperienceItem {...experience} />
+            </li>
+        ))
+    }
+</ol>

@@ -1,16 +1,37 @@
 ---
+import BaseLayout from "@/layouts/BaseLayout.astro"
 
+import SectionContainer from "@/components/SectionContainer.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import Hero from "@/components/Hero.astro";
+import Experience from "@/components/Experience.astro";
+import Projects from "@/components/Projects.astro";
+import AboutMe from "@/components/AboutMe.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout 
+	pageTitle="Portfolio de mariollesta" 
+	description="Portfolio personal de mariollesta, desarrollador web con experiencia en tecnologías modernas."
+>
+	<main class="px-4">
+		<SectionContainer id="hero" class="py-16 md:py-36">
+			<Hero />
+		</SectionContainer>
+		<div class="space-y-24">
+			<SectionContainer id="experience">
+				<SectionTitle>Experiencia laboral</SectionTitle>
+				<Experience />
+			</SectionContainer>
+
+			<SectionContainer id="projects">
+				<SectionTitle>Proyectos destacados</SectionTitle>
+				<Projects />
+			</SectionContainer>
+
+			<SectionContainer id="about">
+				<SectionTitle>Sobre mí</SectionTitle>
+				<AboutMe />
+			</SectionContainer>
+		</div>
+	</main>
+</BaseLayout>

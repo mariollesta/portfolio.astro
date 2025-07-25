@@ -1,0 +1,109 @@
+---
+import ThemeToggle from "@/components/ThemeToggle.astro"
+
+const navItems = [
+    {
+        title: "Experiencia",
+        label: "experiencia",
+        url: "/#experiencia",
+    },
+    {
+        title: "Proyectos",
+        label: "proyectos",
+        url: "/#proyectos",
+    },
+    {
+        title: "Sobre mí",
+        label: "sobre-mi",
+        url: "/#sobre-mi",
+    },
+    {
+        title: "Contacto",
+        label: "contacto",
+        url: "mailto:llesta.mario@gmail.com",
+    },
+]
+---
+
+<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+    <nav
+        class="flex px-3 text-sm font-medium rounded-full justify-center items-center animate-nav-scroll bg-[var(--color-nav-bg)] text-[var(--color-nav-text)] backdrop-blur-md ring-1 ring-[var(--color-nav-border)]"
+    >
+        {
+            navItems.map((link) => (
+                <a
+                    class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+                    aria-label={link.label}
+                    href={link.url}
+                >
+                    {link.title}
+                </a>
+            ))
+        }
+        <ThemeToggle />
+    </nav>
+</header>
+
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const sections = document.querySelectorAll("section")
+        const navItems = document.querySelectorAll("header nav a")
+
+        const callback = (entries: any[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                navItems.forEach((item) => {
+                    if (item.getAttribute("aria-label") == entry.target.id) {
+                        item.classList.add("text-blue-500")
+                    } else {
+                        item.classList.remove("text-blue-500")
+                    }
+                })
+                }
+            })
+        }
+
+        const observer = new IntersectionObserver(callback, {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.3,
+        })
+
+        sections.forEach((section) => {
+            observer.observe(section)
+        })
+
+        document.onvisibilitychange = () => {
+        if (document.visibilityState === "hidden") {
+            observer.disconnect()
+        } else {
+                sections.forEach((section) => {
+                observer.observe(section)
+            })
+        }
+        }
+    })
+</script>
+
+<style>
+    @keyframes nav-shadown {
+        0% {
+            background-color: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+        to {
+            background-color: var(--color-nav-bg-animated);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+        }
+    }
+
+    .animate-nav-scroll {
+        animation: nav-shadown 1s linear both;
+        animation-timeline: scroll();
+        animation-range: 0 100px;
+    }
+</style>
