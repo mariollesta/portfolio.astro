@@ -3,7 +3,7 @@ import Sun from "@/components/icons/Sun.astro"
 import Moon from "@/components/icons/Moon.astro"
 import System from "@/components/icons/System.astro"
 
-const THEMES = ["Light", "Dark", "System"]
+const THEMES = ["Claro", "Oscuro", "Sistema"]
 ---
 
 <div class="relative ml-1 mr-1">
@@ -110,7 +110,14 @@ const THEMES = ["Light", "Dark", "System"]
 
     document.querySelectorAll(".themes-menu-option").forEach((element) => {
         element.addEventListener("click", (e) => {
-            localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
+            const themeText = e.target.innerText.toLowerCase().trim()
+            // Map theme text to storage values
+            const themeMap = {
+                'claro': 'light',
+                'oscuro': 'dark',
+                'sistema': 'system'
+            }
+            localStorage.setItem("theme", themeMap[themeText])
             updateTheme()
         })
     })

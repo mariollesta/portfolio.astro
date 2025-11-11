@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-de-mllesta",
+  "name": "portfolio-de-mariollesta",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "@fontsource-variable/onest": "^5.2.9",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.12.0",
+    "astro": "^5.15.5",
     "tailwindcss": "^4.1.11"
   }
 }

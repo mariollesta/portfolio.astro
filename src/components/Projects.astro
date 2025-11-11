@@ -4,11 +4,17 @@ import LinkButton from "@/components/LinkButton.astro"
 
 import GitHub from "@/components/icons/GitHub.astro"
 import Tailwind from "@/components/icons/Tailwind.astro"
+import TypeScript from "@/components/icons/TypeScript.astro"
 import React from "@/components/icons/React.astro"
 import FastApi from "@/components/icons/FastApi.astro"
 import Vercel from "@/components/icons/Vercel.astro"
 
 const TAGS = {
+    TYPESCRIPT: {
+        name: "TypeScript",
+        class: "bg-[#1c385e] text-white",
+        icon: TypeScript,
+    },
     REACT: {
         name: "React",
         class: "bg-[#20232a] text-white",
@@ -30,13 +36,23 @@ const TAGS = {
         icon: Vercel,
     },
 }
+
 const PROJECTS = [
     {
-        title: "Locatall - Todo lo que necesitas, cerca de ti",
+        title: "loadingVI",
+        description:
+        "Contador en tiempo real de la fecha de lanzamiento de Grand Theft Auto VI.",
+        link: "https://loadingvi.com",
+        github: "https://github.com/mariollesta/loadingVI",
+        image: "/projects/loadingvi.webp",
+        tags: [TAGS.TYPESCRIPT, TAGS.REACT, TAGS.TAILWIND, TAGS.VERCEL],
+    },
+    {
+        title: "locatall",
         description:
         "Aplicación web diseñada para ayudarte a encontrar lugares cercanos mejor valorados en Google en función de tu ubicación y preferencias.",
         link: "https://locatall.vercel.app/",
-        github: "https://github.com/mllesta/locatall",
+        github: "https://github.com/mariollesta/locatall",
         image: "/projects/locatall.webp",
         tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.FASTAPI, TAGS.VERCEL],
     },
@@ -98,4 +114,3 @@ const PROJECTS = [
         ))
     }
 </div>
-
