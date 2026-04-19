@@ -3,9 +3,10 @@ import Link from "@/components/icons/Link.astro"
 import LinkButton from "@/components/LinkButton.astro"
 
 import GitHub from "@/components/icons/GitHub.astro"
-import Tailwind from "@/components/icons/Tailwind.astro"
 import TypeScript from "@/components/icons/TypeScript.astro"
 import React from "@/components/icons/React.astro"
+import CSS from "@/components/icons/CSS.astro"
+import Tailwind from "@/components/icons/Tailwind.astro"
 import FastApi from "@/components/icons/FastApi.astro"
 import Vercel from "@/components/icons/Vercel.astro"
 
@@ -19,6 +20,11 @@ const TAGS = {
         name: "React",
         class: "bg-[#20232a] text-white",
         icon: React,
+    },
+    CSS: {
+        name: "CSS",
+        class: "bg-[#1572B6] text-white",
+        icon: CSS,
     },
     TAILWIND: {
         name: "Tailwind",
@@ -38,6 +44,15 @@ const TAGS = {
 }
 
 const PROJECTS = [
+    {
+        title: "Country Explorer",
+        description:
+        "Minimalist web app to explore information about countries around the world.",
+        link: "https://country-explorer-minimal.vercel.app/",
+        github: "https://github.com/mariollesta/country-explorer",
+        image: "/projects/country-explorer.webp",
+        tags: [TAGS.TYPESCRIPT, TAGS.REACT, TAGS.CSS, TAGS.VERCEL],
+    },
     {
         title: "loadingVI",
         description:
