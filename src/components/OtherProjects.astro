@@ -1,0 +1,97 @@
+---
+import LinkButton from "@/components/LinkButton.astro"
+
+import GitHub from "@/components/icons/GitHub.astro"
+import Link from "@/components/icons/Link.astro"
+
+
+const OTHER_PROJECTS = [
+    {
+        title: "locatall",
+        description: "Aplicación web diseñada para encontrar lugares cercanos mejor valorados en Google.",
+        github: "https://github.com/mariollesta/locatall",
+        link: "https://locatall.vercel.app/",
+    },
+    {
+        title: "cli-wordcount",
+        description: "Mi propia versión de la herramienta de línea de comandos de Unix «wc».",
+        github: "https://github.com/mariollesta/cli-wordcount",
+    },
+    
+]
+---
+
+<div class="relative">
+    <div
+        id="other-slider"
+        class="flex gap-x-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+        style="scrollbar-width: none;"
+    >
+        {
+            OTHER_PROJECTS.map(({ title, description, github, link }) => (
+                <article class="snap-start shrink-0 w-[calc(33.333%-11px)] min-w-[260px] border border-[var(--color-border)] rounded-none p-5 flex flex-col gap-y-2 hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-hover)] transition duration-300">
+                    <h3 class="text-base font-medium text-[var(--color-text)]">
+                        {title}
+                    </h3>
+                    <p class="text-sm text-[var(--color-subtle)] flex-1">
+                        {description}
+                    </p>
+                    <footer class="mt-2">
+                        {github && (
+                            <LinkButton href={github}>
+                                <GitHub class="size-3" />
+                                Code
+                            </LinkButton>
+                        )}
+                        {link && (
+                            <LinkButton href={link}>
+                                <Link class="size-3" />
+                                Preview
+                            </LinkButton>
+                        )}
+                    </footer>
+                </article>
+            ))
+        }
+    </div>
+
+    {
+        OTHER_PROJECTS.length > 3 && (
+            <div class="flex justify-end gap-x-2 mt-3">
+                <button
+                    id="prev-btn"
+                    aria-label="Previous"
+                    class="p-1.5 rounded-sm border border-[var(--color-border)] hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-hover)] transition text-[var(--color-subtle)] disabled:opacity-30"
+                >
+                    ←
+                </button>
+                <button
+                    id="next-btn"
+                    aria-label="Next"
+                    class="p-1.5 rounded-sm border border-[var(--color-border)] hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-hover)] transition text-[var(--color-subtle)] disabled:opacity-30"
+                >
+                    →
+                </button>
+            </div>
+        )
+    }
+</div>
+
+<script>
+    const slider = document.getElementById("other-slider") as HTMLElement
+    const prevBtn = document.getElementById("prev-btn")
+    const nextBtn = document.getElementById("next-btn")
+
+    const scrollByCard = () => {
+        const card = slider.querySelector("article") as HTMLElement
+        return card ? card.offsetWidth + 16 : 280 // 16 = gap-x-4
+    }
+
+    prevBtn?.addEventListener("click", () => {
+        slider.scrollBy({ left: -scrollByCard(), behavior: "smooth" })
+    })
+
+    nextBtn?.addEventListener("click", () => {
+        slider.scrollBy({ left: scrollByCard(), behavior: "smooth" })
+    })
+</script>

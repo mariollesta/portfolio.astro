@@ -6,6 +6,8 @@ import SectionTitle from "@/components/SectionTitle.astro";
 import Hero from "@/components/Hero.astro";
 import Experience from "@/components/Experience.astro";
 import Projects from "@/components/Projects.astro";
+import OtherProjects from "@/components/OtherProjects.astro";
+import Education from "@/components/Education.astro";
 import AboutMe from "@/components/AboutMe.astro";
 ---
 
@@ -23,9 +25,19 @@ import AboutMe from "@/components/AboutMe.astro";
 				<Projects />
 			</SectionContainer>
 			
+			<SectionContainer id="other-projects">
+				<SectionTitle>Otros proyectos</SectionTitle>
+				<OtherProjects />
+			</SectionContainer>
+
 			<SectionContainer id="experience">
 				<SectionTitle>Experiencia laboral</SectionTitle>
 				<Experience />
+			</SectionContainer>
+
+			<SectionContainer id="education">
+				<SectionTitle>Formación académica</SectionTitle>
+				<Education />
 			</SectionContainer>
 
 			<SectionContainer id="about">
