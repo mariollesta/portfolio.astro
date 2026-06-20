@@ -22,31 +22,42 @@ const navItems = [
         label: "about-me",
         url: "/#about-me",
     },
-    {
-        title: "Contacto",
-        label: "contact",
-        url: "mailto:llesta.mario@gmail.com",
-    },
 ]
 ---
 
-<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
-    <nav
-        class="flex px-3 text-sm font-medium rounded-sm justify-center items-center animate-nav-scroll bg-[var(--color-nav-bg)] text-[var(--color-nav-text)] backdrop-blur-md ring-1 ring-[var(--color-nav-border)]"
-    >
-        {
-            navItems.map((link) => (
-                <a
-                    class="relative block px-2 py-2 transition-all after:absolute after:bottom-1 after:left-1/2 after:h-0.25 after:w-0 after:bg-[var(--color-border)] after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-[calc(100%-16px)]"
-                    aria-label={link.label}
-                    href={link.url}
-                >
-                    {link.title}
-                </a>
-            ))
-        }
+<header class="fixed top-0 z-50 w-full mx-auto animate-nav-scroll">
+    
+    <!-- mobile -->
+    <div class="flex md:hidden items-center justify-between px-6 py-2 text-sm font-medium text-[var(--color-nav-text)]">
+        <a href="/" class="text-base tracking-tight text-[var(--color-nav-text)]">
+            mariollesta
+        </a>
+    </div>
+
+    <!-- desktop -->
+    <div class="hidden md:flex items-center justify-between px-32 py-2 text-sm font-medium text-[var(--color-nav-text)]">
+        <a href="/" class="text-base tracking-tight text-[var(--color-nav-text)]">
+            mariollesta
+        </a>
+        <nav class="flex items-center">
+            {
+                navItems.map((link) => (
+                    <a
+                        class="relative block px-2 py-2 transition-all after:absolute after:bottom-1 after:left-1/2 after:h-0.25 after:w-0 after:bg-[var(--color-border)] after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-[calc(100%-16px)]"
+                        aria-label={link.label}
+                        href={link.url}
+                    >
+                        {link.title}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
+
+    <div class="absolute right-6 md:right-24 top-1/2 -translate-y-1/2">
         <ThemeToggle />
-    </nav>
+    </div>
+
 </header>
 
 

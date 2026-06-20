@@ -14,11 +14,9 @@
   --color-link: var(--color-text);   
   --color-link-hover: #ffffff;
 
-  --color-bg-pill: #f0f1f1;    
-  --color-bg-pill-hover: #111827;    
-  --color-border-pill: #d1d5db;   
-  --color-border-pill-hover: #374151; 
-  --color-bg-pill-active: #000000;
+  --color-bg-pill: rgba(0, 0, 0, 0.06);       
+  --color-bg-pill-hover: rgba(0, 0, 0, 0.11);
+  --color-bg-pill-active: rgba(0, 0, 0, 0.16);
 
   /* Navbar animation background + border */
   --color-nav-bg-animated: rgba(255, 255, 255, 0.5); 
@@ -26,23 +24,21 @@
   --color-theme-option-hover-bg: #e2e2e2;      
   --color-theme-option-hover-text: #000000;
 
-  /* Badge colors (green theme) */
-  --color-badge-text: #166534;       
-  --color-badge-bg: #dcfce7;           
-  --color-badge-gradient-start: #51E4B8;
-  --color-badge-gradient-middle: #21554E;
-  --color-badge-gradient-end: #51E4B8;
+  
 }
 
 html {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: 'Geist Mono Variable', monospace, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', monospace, system-ui;
+  --font-serif: 'EB Garamond Variable', serif;
+
+  font-family: var(--font-mono);
   transition: background-color 0.3s, color 0.3s;
 }
 
 html.dark {
-  --color-bg: #1b1b1b;
+  --color-bg: #000000;
   --color-text: #ffffff;
   --color-subtle: #a0a0a0;
   --color-border: rgba(255, 255, 255, 0.3);
@@ -53,11 +49,9 @@ html.dark {
   --color-link: #ffffff;
   --color-link-hover: #000000;
 
-  --color-bg-pill: #1b1b1b;   
-  --color-bg-pill-hover: #f3f4f6;
-  --color-border-pill: rgba(255, 255, 255, 0.3);
-  --color-border-pill-hover: #d1d5db; 
-  --color-bg-pill-active: #f9fafb;    
+  --color-bg-pill: rgba(255, 255, 255, 0.08);
+  --color-bg-pill-hover: rgba(255, 255, 255, 0.14);
+  --color-bg-pill-active: rgba(255, 255, 255, 0.20);   
 
   /* Navbar animation background + border for dark mode */
   --color-nav-bg-animated: rgba(255, 255, 255, 0.05); 
@@ -65,7 +59,4 @@ html.dark {
   --color-theme-option-hover-bg: #303030;      
   --color-theme-option-hover-text: #f3f4f6; 
 
-  /* Badge colors for dark mode */
-  --color-badge-text: #a7f3d0;          /* green-200 */
-  --color-badge-bg: #0c2725;            /* green-100 */
 }

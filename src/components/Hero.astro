@@ -2,32 +2,39 @@
 const personalImageAlt = "Mario Llesta";
 
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import GitHubIcon from "@/components/icons/GitHub.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
 ---
 
-<div class="max-w-xl">
-    <div class="flex items-center gap-8 mb-6">
+<div class="relative w-full overflow-hidden flex items-center justify-between gap-8">
+
+    <div class="z-10 max-w-xl w-full flex flex-col items-center md:items-start gap-3">
         <img
-            class="rounded-full shadow-sm size-16 shrink-0"
+            class="rounded-full shadow-sm size-24 mb-2"
             src="/profile.webp"
             alt={personalImageAlt}
         />
-        <h1 class="text-4xl font-bold tracking-tight text-[var(--color-text)]">
-            Hola, soy Mario Llesta!
+        <h1 class="text-5xl font-serif tracking-tight text-[var(--color-text)] text-center md:text-left">
+            Mario Llesta
         </h1>
+        <p class="text-lg text-[var(--color-text)] opacity-50 text-center md:text-left">
+            Ingeniero de Telecomunicaciones
+        </p>
+        <nav class="flex flex-wrap gap-3 mt-1 justify-center md:justify-start">
+            <SocialPill href="https://www.linkedin.com/in/mariollesta/">
+                <LinkedInIcon class="size-5" />
+            </SocialPill>
+            <SocialPill href="https://github.com/mariollesta">
+                <GitHubIcon class="size-5" />
+            </SocialPill>
+            <SocialPill href="mailto:llesta.mario@gmail.com">
+                <MailIcon class="size-5" />
+            </SocialPill>
+        </nav>
+        <p class="text-md text-[var(--color-text)] opacity-70 leading-relaxed mt-2 text-center md:text-left">
+            Ingeniero y desarrollador de software enfocado en la automatización y curioso por las nuevas tecnologías y los retos que plantea el mundo actual. 
+        </p>
     </div>
-    <p class="text-l text-[var(--color-text)] [&>strong]:font-semibold">
-        +3 años de experiencia en el sector IT. <strong>Ingeniero de Telecomunicaciones y desarrollador de software</strong> de Toledo, España 🇪🇸.
-    </p>
-    <nav class="flex flex-wrap gap-4 mt-8">
-        <SocialPill href="mailto:llesta.mario@gmail.com">
-            <MailIcon class="size-4" />
-            Contáctame
-        </SocialPill>
-        <SocialPill href="https://www.linkedin.com/in/mariollesta/">
-            <LinkedInIcon class="size-4" />
-            LinkedIn
-        </SocialPill>
-    </nav>
+
 </div>

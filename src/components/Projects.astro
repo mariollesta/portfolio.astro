@@ -9,6 +9,7 @@ import CSS from "@/components/icons/CSS.astro"
 import Tailwind from "@/components/icons/Tailwind.astro"
 import FastApi from "@/components/icons/FastApi.astro"
 import Vercel from "@/components/icons/Vercel.astro"
+import VSCode from "@/components/icons/VSCode.astro"
 
 const TAGS = {
     TYPESCRIPT: {
@@ -41,9 +42,22 @@ const TAGS = {
         class: "bg-[#000] text-white",
         icon: Vercel,
     },
+    VSCODE: {
+        name: "VSCode",
+        class: "bg-[#0078D4] text-white",
+        icon: VSCode,
+    },
 }
 
 const PROJECTS = [
+    {
+        title: "The One Piece Theme",
+        description:
+        "Temas limpios y oscuros inspirados en One Piece para Visual Studio Code.",
+        github: "https://github.com/mariollesta/the-one-piece-theme",
+        image: "/projects/the-one-piece-theme.webp",
+        tags: [TAGS.VSCODE],
+    },
     {
         title: "Country Explorer",
         description:
@@ -52,15 +66,6 @@ const PROJECTS = [
         github: "https://github.com/mariollesta/country-explorer",
         image: "/projects/country-explorer.webp",
         tags: [TAGS.TYPESCRIPT, TAGS.REACT, TAGS.CSS, TAGS.VERCEL],
-    },
-    {
-        title: "loadingVI",
-        description:
-        "Contador en tiempo real de la fecha de lanzamiento de Grand Theft Auto VI.",
-        link: "https://loadingvi.com",
-        github: "https://github.com/mariollesta/loadingVI",
-        image: "/projects/loadingvi.webp",
-        tags: [TAGS.TYPESCRIPT, TAGS.REACT, TAGS.TAILWIND, TAGS.VERCEL],
     },
 ]
 ---

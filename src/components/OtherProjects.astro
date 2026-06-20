@@ -7,6 +7,13 @@ import Link from "@/components/icons/Link.astro"
 
 const OTHER_PROJECTS = [
     {
+        title: "loadingVI",
+        description:
+        "Contador en tiempo real de la fecha de lanzamiento de Grand Theft Auto VI.",
+        github: "https://github.com/mariollesta/loadingVI",
+        link: "https://loadingvi.com",
+    },
+    {
         title: "locatall",
         description: "Aplicación web diseñada para encontrar lugares cercanos mejor valorados en Google.",
         github: "https://github.com/mariollesta/locatall",
@@ -29,7 +36,7 @@ const OTHER_PROJECTS = [
     >
         {
             OTHER_PROJECTS.map(({ title, description, github, link }) => (
-                <article class="snap-start shrink-0 w-[calc(33.333%-11px)] min-w-[260px] border border-[var(--color-border)] rounded-none p-5 flex flex-col gap-y-2 hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-hover)] transition duration-300">
+                <article class="snap-start shrink-0 w-[calc(33.333%-11px)] min-w-[260px] border border-[var(--color-border)] rounded-sm p-5 flex flex-col gap-y-2 hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-hover)] transition duration-300">
                     <h3 class="text-base font-medium text-[var(--color-text)]">
                         {title}
                     </h3>
