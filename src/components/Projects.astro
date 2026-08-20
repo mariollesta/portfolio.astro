@@ -4,6 +4,7 @@ import LinkButton from "@/components/LinkButton.astro"
 
 import GitHub from "@/components/icons/GitHub.astro"
 import TypeScript from "@/components/icons/TypeScript.astro"
+import JavaScript from "@/components/icons/JavaScript.astro"
 import React from "@/components/icons/React.astro"
 import CSS from "@/components/icons/CSS.astro"
 import Tailwind from "@/components/icons/Tailwind.astro"
@@ -16,6 +17,11 @@ const TAGS = {
         name: "TypeScript",
         class: "bg-[#1c385e] text-white",
         icon: TypeScript,
+    },
+    JAVASCRIPT: {
+        name: "JavaScript",
+        class: "bg-[#101010] text-white",
+        icon: JavaScript,
     },
     REACT: {
         name: "React",
@@ -51,21 +57,19 @@ const TAGS = {
 
 const PROJECTS = [
     {
+        title: "Wins",
+        description:"Lista de tareas diarias minimalista.",
+        link: "https://winsapp.vercel.app/",
+        github: "https://github.com/mariollesta/wins",
+        image: "/projects/wins.webp",
+        tags: [TAGS.JAVASCRIPT, TAGS.REACT, TAGS.CSS, TAGS.VERCEL],
+    },
+    {
         title: "The One Piece Theme",
-        description:
-        "Temas limpios y oscuros inspirados en One Piece para Visual Studio Code.",
+        description:"Temas limpios y oscuros inspirados en One Piece para Visual Studio Code.",
         github: "https://github.com/mariollesta/the-one-piece-theme",
         image: "/projects/the-one-piece-theme.webp",
         tags: [TAGS.VSCODE],
-    },
-    {
-        title: "Country Explorer",
-        description:
-        "Aplicación web minimalista para explorar información sobre países de todo el mundo.",
-        link: "https://country-explorer-minimal.vercel.app/",
-        github: "https://github.com/mariollesta/country-explorer",
-        image: "/projects/country-explorer.webp",
-        tags: [TAGS.TYPESCRIPT, TAGS.REACT, TAGS.CSS, TAGS.VERCEL],
     },
 ]
 ---
