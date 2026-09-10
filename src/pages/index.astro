@@ -1,57 +1,48 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
-import SectionContainer from "@/components/SectionContainer.astro";
-import SectionTitle from "@/components/SectionTitle.astro";
-import Hero from "@/components/Hero.astro";
-import Quote from "@/components/Quote.astro";
-import Experience from "@/components/Experience.astro";
-import Projects from "@/components/Projects.astro";
-import OtherProjects from "@/components/OtherProjects.astro";
-import Education from "@/components/Education.astro";
-import AboutMe from "@/components/AboutMe.astro";
+import SectionContainer from "@/components/SectionContainer.astro"
+import SectionTitle from "@/components/SectionTitle.astro"
+import Hero from "@/components/Hero.astro"
+import Experience from "@/components/Experience.astro"
+import Projects from "@/components/Projects.astro"
+import OtherProjects from "@/components/OtherProjects.astro"
+import Education from "@/components/Education.astro"
+import AboutMe from "@/components/AboutMe.astro"
 ---
 
 <BaseLayout 
 	pageTitle="Portfolio de mariollesta" 
 	description="Portfolio personal de mariollesta, desarrollador web con experiencia en tecnologías modernas."
 >
-	<main class="px-4">
-		<SectionContainer id="hero" class="py-24 md:py-32">
+	<main>
+		<SectionContainer id="hero">
 			<Hero />
 		</SectionContainer>
-		<SectionContainer id="quote" class="pb-16 md:pb-32"> 
-			<Quote 
-				quote="it's tough to make predictions, especially about the future"
-				author="Niels Bohr"
-			/>
+
+		<SectionContainer id="projects">
+			<SectionTitle>Proyectos</SectionTitle>
+			<Projects />
+		</SectionContainer>
+		
+		<SectionContainer id="other-projects">
+			<SectionTitle>Otros proyectos</SectionTitle>
+			<OtherProjects />
 		</SectionContainer>
 
-		<div class="space-y-28">
-			<SectionContainer id="projects">
-				<SectionTitle>Proyectos</SectionTitle>
-				<Projects />
-			</SectionContainer>
-			
-			<SectionContainer id="other-projects">
-				<SectionTitle>Otros proyectos</SectionTitle>
-				<OtherProjects />
-			</SectionContainer>
+		<SectionContainer id="experience">
+			<SectionTitle>Experiencia</SectionTitle>
+			<Experience />
+		</SectionContainer>
 
-			<SectionContainer id="experience">
-				<SectionTitle>Experiencia</SectionTitle>
-				<Experience />
-			</SectionContainer>
+		<SectionContainer id="education">
+			<SectionTitle>Formación</SectionTitle>
+			<Education />
+		</SectionContainer>
 
-			<SectionContainer id="education">
-				<SectionTitle>Formación</SectionTitle>
-				<Education />
-			</SectionContainer>
-
-			<SectionContainer id="about-me">
-				<SectionTitle>Sobre mí</SectionTitle>
-				<AboutMe />
-			</SectionContainer>
-		</div>
+		<SectionContainer id="about-me">
+			<SectionTitle>Sobre mí</SectionTitle>
+			<AboutMe />
+		</SectionContainer>
 	</main>
 </BaseLayout>

@@ -1,40 +1,122 @@
 ---
-const personalImageAlt = "Mario Llesta";
-
-import LinkedInIcon from "@/components/icons/LinkedIn.astro";
-import GitHubIcon from "@/components/icons/GitHub.astro";
-import MailIcon from "@/components/icons/Mail.astro";
-import SocialPill from "@/components/SocialPill.astro";
 ---
 
-<div class="relative w-full overflow-hidden flex items-center justify-between gap-8">
+<div class="hero">
+    <h1 class="hero__name">MARIO LLESTA</h1>
 
-    <div class="z-10 max-w-xl w-full flex flex-col items-center md:items-start gap-3">
-        <img
-            class="rounded-full shadow-sm size-24 mb-2"
-            src="/profile.webp"
-            alt={personalImageAlt}
-        />
-        <h1 class="text-5xl font-serif tracking-tight text-[var(--color-text)] text-center md:text-left">
-            Mario Llesta
-        </h1>
-        <p class="text-lg text-[var(--color-text)] opacity-50 text-center md:text-left">
-            Ingeniero de Telecomunicaciones
-        </p>
-        <nav class="flex flex-wrap gap-3 mt-1 justify-center md:justify-start">
-            <SocialPill href="https://www.linkedin.com/in/mariollesta/">
-                <LinkedInIcon class="size-5" />
-            </SocialPill>
-            <SocialPill href="https://github.com/mariollesta">
-                <GitHubIcon class="size-5" />
-            </SocialPill>
-            <SocialPill href="mailto:llesta.mario@gmail.com">
-                <MailIcon class="size-5" />
-            </SocialPill>
-        </nav>
-        <p class="text-md text-[var(--color-text)] opacity-70 leading-relaxed mt-2 text-center md:text-left">
-            Ingeniero y desarrollador de software enfocado en la automatización y curioso por las nuevas tecnologías y los retos que plantea el mundo actual. 
-        </p>
+    <p class="hero__description">
+        Ingeniero de Telecomunicaciones. Actualmente estudiando el Máster en Ciencia de Datos.
+    </p>
+
+    <div class="hero__social">
+        <a href="https://github.com/mariollesta" class="hero__social-link" target="_blank" rel="noopener noreferrer">github</a>
+        <span class="hero__social-sep" aria-hidden="true">·</span>
+        <a href="https://www.linkedin.com/in/mariollesta/" class="hero__social-link" target="_blank" rel="noopener noreferrer">linkedin</a>
+        <span class="hero__social-sep" aria-hidden="true">·</span>
+        <a href="https://x.com/mariollesta" class="hero__social-link" target="_blank" rel="noopener noreferrer">X</a>
     </div>
-
 </div>
+
+<style>
+    :root {
+        --hero-right-effect-opacity: 0.2;
+    }
+
+    .hero {
+        position: relative;
+        max-width: 900px;
+        margin-inline: auto;
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .hero__name {
+        font-family: var(--font-primary);
+        font-weight: 700;
+        color: var(--color-ink);
+        font-size: 40px;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        margin: 0 0 var(--spacing-xl);
+    }
+
+    @media (min-width: 480px) {
+        .hero__name {
+            font-size: 48px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .hero__name {
+            font-size: 56px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero__name {
+            font-size: var(--text-display-xl);
+            line-height: var(--text-display-xl-lh);
+            letter-spacing: var(--text-display-xl-ls);
+        }
+    }
+
+    .hero__description {
+        font-family: var(--font-primary);
+        font-size: 16px;
+        line-height: var(--text-body-md-lh);
+        color: var(--color-body);
+        margin: 0 0 var(--spacing-2xl);
+        max-width: 600px;
+        text-wrap: pretty;
+    }
+
+    @media (min-width: 768px) {
+        .hero__description {
+            font-size: var(--text-body-lg);
+            line-height: var(--text-body-lg-lh);
+        }
+    }
+
+    .hero__social {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1;
+    }
+
+    .hero__social-link {
+        color: var(--color-mute);
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+
+    .hero__social-link:hover {
+        color: var(--color-accent);
+    }
+
+    .hero__social-sep {
+        color: var(--color-hairline);
+        user-select: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .hero {
+            animation: hero-fade-in 0.5s ease-out both;
+        }
+
+        @keyframes hero-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+</style>

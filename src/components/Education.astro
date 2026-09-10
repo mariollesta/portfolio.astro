@@ -1,5 +1,5 @@
 ---
-import GraduationCap from "@/components/icons/GraduationCap.astro"
+import GraduationCap from "@/components/icons/GraduationCap.astro";
 
 const EDUCATION = [
   {
@@ -12,33 +12,145 @@ const EDUCATION = [
 ]
 ---
 
-<div class="flex flex-col gap-y-3">
+<div>
     {
         EDUCATION.map(({ title, institution, grade, period, link }) => (
-            <article class="flex items-start justify-between gap-4 pt-4">
-                <div class="flex gap-3 items-start">
-                    <div class="mt-0.5 p-2">
-                        <GraduationCap class="size-4 text-[var(--color-subtle)]" />
+            <article class="education-entry">
+                <div class="education-entry__main">
+                    <GraduationCap class="education-entry__icon" />
+                    <div class="education-entry__info">
+                        <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="education-entry__link"
+                        >
+                            <h3 class="education-entry__title">{title}</h3>
+                        </a>
+                        <p class="education-entry__institution">{institution}</p>
                     </div>
-                    <div>
-                      <a href={link} target="_blank" rel="noopener noreferrer" class="group/link">
-                          <h3 class="text-sm font-medium text-[var(--color-text)] group-hover/link:underline">
-                              {title}
-                          </h3>
-                      </a>
-                      <p class="text-xs text-[var(--color-subtle)]">{institution}</p>
-                  </div>
                 </div>
 
-                <div class="flex flex-col items-end gap-1.5 shrink-0">
-                    <span class="text-xs text-[var(--color-subtle)]">
-                        {period}
-                    </span>
-                    <span class="text-xs text-[var(--color-subtle)]">
-                        Nota: <span class="text-[var(--color-text)] font-medium">{grade}</span>
+                <div class="education-entry__meta">
+                    <span class="education-entry__period">{period}</span>
+                    <span class="education-entry__grade">
+                        Nota: <span class="education-entry__grade-value">{grade}</span>
                     </span>
                 </div>
             </article>
         ))
     }
 </div>
+
+<style>
+    /* Stacked on mobile (clean, prevents right-column squeeze on long titles),
+       side-by-side on desktop. */
+    .education-entry {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    @media (min-width: 768px) {
+        .education-entry {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--spacing-lg);
+        }
+    }
+
+    /* Main column: icon + title + institution */
+    .education-entry__main {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .education-entry__icon {
+        width: 16px;
+        height: 16px;
+        color: var(--color-mute);
+        flex-shrink: 0;
+    }
+
+    .education-entry__info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    /* Title (the link) */
+    .education-entry__link {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .education-entry__title {
+        font-family: var(--font-primary);
+        font-weight: 600;
+        font-size: var(--text-body-md);
+        line-height: var(--text-body-md-lh);
+        color: var(--color-ink);
+        margin: 0;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+        transition: text-decoration-color 0.15s ease;
+    }
+
+    .education-entry__link:hover .education-entry__title,
+    .education-entry__link:focus-visible .education-entry__title {
+        text-decoration-color: var(--color-accent);
+    }
+
+    .education-entry__link:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 4px;
+        border-radius: 4px;
+    }
+
+    /* Institution: secondary, readable */
+    .education-entry__institution {
+        font-family: var(--font-primary);
+        font-size: var(--text-body-sm);
+        line-height: var(--text-body-sm-lh);
+        color: var(--color-body);
+        margin: 0;
+    }
+
+    /* Meta column: period + grade, right-aligned on desktop */
+    .education-entry__meta {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    @media (min-width: 768px) {
+        .education-entry__meta {
+            align-items: flex-end;
+            flex-shrink: 0;
+        }
+    }
+
+    .education-entry__period {
+        font-family: var(--font-mono);
+        font-size: var(--text-caption);
+        line-height: var(--text-caption-lh);
+        color: var(--color-mute);
+    }
+
+    .education-entry__grade {
+        font-family: var(--font-mono);
+        font-size: var(--text-body-sm);
+        line-height: var(--text-body-sm-lh);
+        color: var(--color-mute);
+    }
+
+    /* Grade value: slightly stronger emphasis, no badge/pill */
+    .education-entry__grade-value {
+        color: var(--color-ink);
+        font-weight: 500;
+    }
+</style>

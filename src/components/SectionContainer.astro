@@ -1,11 +1,35 @@
 ---
-const { class: className, id } = Astro.props
+const { class: className, id } = Astro.props;
 ---
 
 <section
     id={id}
     data-section={id}
-    class={`section ${className} scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl`}
+    class:list={["section", className]}
 >
     <slot />
 </section>
+
+<style>
+    .section {
+        width: 100%;
+        max-width: var(--layout-max-width);
+        margin-inline: auto;
+        padding-inline: var(--layout-page-padding);
+        padding-block: var(--spacing-2xl);
+        scroll-margin-top: var(--layout-header-offset);
+    }
+
+    .section[data-section="hero"] {
+        padding-block: var(--spacing-3xl);
+    }
+
+    @media (min-width: 768px) {
+        .section {
+            padding-block: var(--spacing-3xl);
+        }
+        .section[data-section="hero"] {
+            padding-block: var(--spacing-4xl);
+        }
+    }
+</style>

@@ -1,64 +1,32 @@
 ---
-import Link from "@/components/icons/Link.astro"
-import LinkButton from "@/components/LinkButton.astro"
+import Link from "@/components/icons/Link.astro";
+import LinkButton from "@/components/LinkButton.astro";
 
-import GitHub from "@/components/icons/GitHub.astro"
-import TypeScript from "@/components/icons/TypeScript.astro"
-import JavaScript from "@/components/icons/JavaScript.astro"
-import React from "@/components/icons/React.astro"
-import CSS from "@/components/icons/CSS.astro"
-import Tailwind from "@/components/icons/Tailwind.astro"
-import FastApi from "@/components/icons/FastApi.astro"
-import Vercel from "@/components/icons/Vercel.astro"
-import VSCode from "@/components/icons/VSCode.astro"
+import GitHub from "@/components/icons/GitHub.astro";
+import TypeScript from "@/components/icons/TypeScript.astro";
+import JavaScript from "@/components/icons/JavaScript.astro";
+import React from "@/components/icons/React.astro";
+import CSS from "@/components/icons/CSS.astro";
+import Tailwind from "@/components/icons/Tailwind.astro";
+import FastApi from "@/components/icons/FastApi.astro";
+import Vercel from "@/components/icons/Vercel.astro";
+import VSCode from "@/components/icons/VSCode.astro";
 
 const TAGS = {
-    TYPESCRIPT: {
-        name: "TypeScript",
-        class: "bg-[#1c385e] text-white",
-        icon: TypeScript,
-    },
-    JAVASCRIPT: {
-        name: "JavaScript",
-        class: "bg-[#101010] text-white",
-        icon: JavaScript,
-    },
-    REACT: {
-        name: "React",
-        class: "bg-[#20232a] text-white",
-        icon: React,
-    },
-    CSS: {
-        name: "CSS",
-        class: "bg-[#1572B6] text-white",
-        icon: CSS,
-    },
-    TAILWIND: {
-        name: "Tailwind",
-        class: "bg-[#003159] text-white",
-        icon: Tailwind,
-    },
-    FASTAPI: {
-        name: "FastAPI",
-        class: "bg-[#003332] text-white",
-        icon: FastApi,
-    },
-    VERCEL: {
-        name: "Vercel",
-        class: "bg-[#000] text-white",
-        icon: Vercel,
-    },
-    VSCODE: {
-        name: "VSCode",
-        class: "bg-[#0078D4] text-white",
-        icon: VSCode,
-    },
-}
+    TYPESCRIPT: { name: "TypeScript", icon: TypeScript },
+    JAVASCRIPT: { name: "JavaScript", icon: JavaScript },
+    REACT: { name: "React", icon: React },
+    CSS: { name: "CSS", icon: CSS },
+    TAILWIND: { name: "Tailwind", icon: Tailwind },
+    FASTAPI: { name: "FastAPI", icon: FastApi },
+    VERCEL: { name: "Vercel", icon: Vercel },
+    VSCODE: { name: "VSCode", icon: VSCode },
+};
 
 const PROJECTS = [
     {
         title: "Wins",
-        description:"Lista de tareas diarias minimalista.",
+        description: "Lista de tareas diarias minimalista.",
         link: "https://winsapp.vercel.app/",
         github: "https://github.com/mariollesta/wins",
         image: "/projects/wins.webp",
@@ -66,66 +34,182 @@ const PROJECTS = [
     },
     {
         title: "The One Piece Theme",
-        description:"Temas limpios y oscuros inspirados en One Piece para Visual Studio Code.",
+        description: "Temas limpios y oscuros inspirados en One Piece para Visual Studio Code.",
         github: "https://github.com/mariollesta/the-one-piece-theme",
         image: "/projects/the-one-piece-theme.webp",
         tags: [TAGS.VSCODE],
     },
-]
+];
 ---
 
-<div class="flex flex-col gap-y-16">
+<div class="projects">
     {
         PROJECTS.map(({ image, title, description, tags, link, github }) => (
-            <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-                <div class="w-full md:w-1/2">
-                    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-sm sm:rounded-sm md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-[var(--color-border)] lg:hover:border-[var(--color-border-hover)] lg:hover:bg-[var(--color-bg-hover)]">
-                        <img
-                            alt=""
-                            class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                            loading="lazy"
-                            src={image}
-                        />
-                    </div>
+            <article class="project">
+                <div class="project__image">
+                    <img alt="" loading="lazy" src={image} />
                 </div>
 
-                <div class="w-full md:w-1/2 md:max-w-lg">
-                    <h3 class="text-xl text-[var(--color-text)]">
-                        {title}
-                    </h3>
-                    <div class="flex flex-wrap mt-2">
-                        <ul class="flex flex-row mb-2 gap-x-2">
+                <div class="project__info">
+                    <h3 class="project__title">{title}</h3>
+
+                    <ul class="project__tags">
                         {tags.map((tag) => (
                             <li>
-                                <span class={`flex gap-x-2 rounded-sm text-xs ${tag.class} py-1 px-2`}>
-                                    <tag.icon class="size-4" />
+                                <span class="project__tag">
+                                    <tag.icon />
                                     {tag.name}
                                 </span>
                             </li>
                         ))}
-                        </ul>
+                    </ul>
 
-                        <div class="mt-2 text-sm text-[var(--color-subtle)]">
-                        {description}
-                        </div>
+                    <p class="project__description">{description}</p>
 
-                        <footer class="flex items-end justify-start mt-4 gap-x-4">
-                            {github && (
-                                <LinkButton href={github}>
-                                    <GitHub class="size-6" />
-                                    Code
-                                </LinkButton>
-                            )}
-                            {link && (
-                                <LinkButton href={link}>
-                                    <Link class="size-4" />
-                                    Preview
-                                </LinkButton>
-                            )}
-                        </footer>
+                    <div class="project__actions">
+                        {github && (
+                            <LinkButton href={github}>
+                                <GitHub />
+                                Code
+                            </LinkButton>
+                        )}
+                        {link && (
+                            <LinkButton href={link}>
+                                <Link />
+                                Preview
+                            </LinkButton>
+                        )}
                     </div>
                 </div>
             </article>
         ))
     }
 </div>
+
+<style>
+    .projects {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3xl);
+    }
+
+    /* Two-column layout: image | info. Stacks on mobile. */
+    .project {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    @media (min-width: 768px) {
+        .project {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: var(--spacing-2xl);
+            align-items: start;
+        }
+    }
+
+    /* Image: clean presentation, hairline border, radius-lg, no shadows */
+    .project__image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border: 1px solid var(--color-hairline);
+        border-radius: var(--radius-lg);
+        transition: border-color 0.2s ease;
+    }
+
+    .project__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .project__image:hover {
+        border-color: var(--color-accent);
+    }
+
+    .project__image:hover img {
+        transform: scale(1.02);
+    }
+
+    /* Info column */
+    .project__info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    @media (min-width: 768px) {
+        .project__info {
+            padding-top: var(--spacing-xs);
+        }
+    }
+
+    /* Title: heading-md */
+    .project__title {
+        font-family: var(--font-primary);
+        font-weight: 600;
+        font-size: var(--text-heading-md);
+        line-height: var(--text-heading-md-lh);
+        letter-spacing: var(--text-heading-md-ls);
+        color: var(--color-ink);
+        margin: 0;
+    }
+
+    /* Tags: neutral treatment, mono, all uniform */
+    .project__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .project__tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: var(--text-caption);
+        line-height: 1;
+        color: var(--color-mute);
+        background-color: var(--color-canvas-soft);
+        border: 1px solid var(--color-hairline);
+        border-radius: var(--radius-pill);
+        padding: 4px 10px;
+    }
+
+    .project__tag svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+    }
+
+    /* Description: body-md */
+    .project__description {
+        font-family: var(--font-primary);
+        font-size: var(--text-body-md);
+        line-height: var(--text-body-md-lh);
+        color: var(--color-body);
+        margin: 0;
+        text-wrap: pretty;
+    }
+
+    /* Actions: LinkButton, icons normalized to 14px */
+    .project__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xs);
+    }
+
+    .project__actions svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+    }
+</style>

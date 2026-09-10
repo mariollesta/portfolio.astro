@@ -2,19 +2,84 @@
 const currentYear = new Date().getFullYear()
 ---
 
-<footer class="opacity-80 mt-16 mb-10 px-6 w-full">
-    <div class="mx-auto max-w-4xl flex flex-col md:flex-row items-center justify-between gap-3 py-4 border-t border-[var(--color-border)]">
-        <span class="text-sm text-center md:text-left">
+<footer class="footer">
+    <div class="footer__inner">
+        <span class="footer__copyright">
             © {currentYear}
-            <a href="" class="hover:underline">mariollesta</a>. Casi todos los derechos reservados
+            <a href="" class="footer__brand"> mariollesta</a>. Casi todos los derechos reservados
         </span>
-        <ul class="flex gap-6 text-sm font-medium">
+
+        <ul class="footer__nav">
             <li>
-                <a href="/#sobre-mi" class="hover:underline">Sobre mí</a>
+                <a href="/#sobre-mi" class="footer__link">Sobre mí</a>
             </li>
             <li>
-                <a href="mailto:llesta.mario@gmail.com" class="hover:underline">Contacto</a>
+                <a href="mailto:llesta.mario@gmail.com" class="footer__link">Contacto</a>
             </li>
         </ul>
     </div>
 </footer>
+
+<style>
+    /* Outer footer: matches SectionContainer's width pattern
+       so the footer uses the global layout's page/content width. */
+    .footer {
+        width: 100%;
+        max-width: var(--layout-max-width);
+        margin-inline: auto;
+        padding-inline: var(--layout-page-padding);
+        padding-block: var(--spacing-3xl);
+        background-color: var(--color-canvas);
+        color: var(--color-mute);
+        font-family: var(--font-primary);
+        font-size: var(--text-body-sm);
+        line-height: var(--text-body-sm-lh);
+        border-top: 1px solid var(--color-hairline);
+    }
+
+    .footer__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    @media (min-width: 768px) {
+        .footer__inner {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+    }
+
+    /* mariollesta: slightly stronger emphasis than surrounding copyright text */
+    .footer__brand {
+        color: var(--color-ink);
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+
+    .footer__brand:hover {
+        color: var(--color-accent);
+    }
+
+    .footer__brand:focus-visible,
+    .footer__link:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 4px;
+        border-radius: 4px;
+    }
+
+    .footer__link {
+        color: var(--color-mute);
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+
+    .footer__link:hover {
+        color: var(--color-ink);
+    }
+</style>

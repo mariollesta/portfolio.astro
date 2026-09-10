@@ -1,24 +1,42 @@
 ---
-
 ---
 
-<article class="flex flex-col items-center justify-center gap-8 text-sm text-[var(--color-subtle)] md:flex-row">
-    <div
-        class="[&>p]:mb-4 [&>p>strong]:text-[var(--color-text)] [&>p>strong]:font-semibold [&>p>strong]:font-mono text-pretty order-2 md:order-1"
-    >
-        <p>
-            Me llamo Mario y soy
-            <strong>graduado en Ingeniería en Tecnologías de Telecomunicación</strong>. Comencé a programar durante mi etapa universitaria, y desde entonces he estado aprendiendo y desarrollando proyectos personales en mi tiempo libre.
-        </p>
+<article class="about">
+    <p>
+        Me llamo Mario y soy <strong>graduado en Ingeniería en Tecnologías de Telecomunicación</strong>. Comencé a programar durante mi etapa universitaria, y desde entonces he estado aprendiendo y desarrollando proyectos personales en mi tiempo libre.
+    </p>
 
-        <p>
-            Actualmente trabajo en una consultora
-            <strong>automatizando el QA de las web principales de Meliá Hotels International</strong>. También he desempeñado roles como administrador de sistemas linux en una empresa de ciberseguridad y como desarrollador software.
-        </p>
+    <p>
+        Actualmente trabajo en una consultora <strong>automatizando el QA de las web principales de Meliá Hotels International</strong>. También he desempeñado roles como administrador de sistemas linux en una empresa de ciberseguridad y como desarrollador software.
+    </p>
 
-        <p>
-            Como desarollador, mi objetivo es crear aplicaciones 
-            <strong>usables y accesibles</strong>, priorizando la experiencia del usuario y que sean de código abierto.  
-        </p>
-    </div>
+    <p>
+        Como desarollador, mi objetivo es crear aplicaciones <strong>usables y accesibles</strong>, priorizando la experiencia del usuario y que sean de código abierto.
+    </p>
 </article>
+
+<style>
+    .about {
+        max-width: var(--layout-reading-width);
+        font-family: var(--font-primary);
+        font-size: var(--text-body-lg);
+        line-height: var(--text-body-lg-lh);
+        color: var(--color-body);
+        text-wrap: pretty;
+    }
+
+    .about p {
+        margin: 0;
+    }
+
+    /* Comfortable paragraph gap — sections form one cohesive personal intro */
+    .about p + p {
+        margin-top: var(--spacing-lg);
+    }
+
+    .about strong {
+        color: var(--color-ink);
+        font-weight: 600;
+        font-family: var(--font-mono);
+    }
+</style>

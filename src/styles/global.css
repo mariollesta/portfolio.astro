@@ -1,62 +1,207 @@
 @import "tailwindcss";
 
+/* =============================================================================
+   Design tokens (DESING.md)
+   -----------------------------------------------------------------------------
+   The @theme directive registers tokens for Tailwind utilities AND emits them
+   as CSS custom properties at :root. Tokens are also overridden inside
+   html.dark to support class-based dark mode.
+   ============================================================================= */
+
+@theme {
+  /* Colors */
+  --color-primary: #171717;
+  --color-on-primary: #ffffff;
+  --color-ink: #171717;
+  --color-body: #525252;
+  --color-mute: #737373;
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #fafafa;
+  --color-hairline: #eaeaea;
+  --color-accent: #16a34a;
+  --color-accent-deep: #15803d;
+  --color-accent-soft: #dcfce7;
+  --color-error: #dc2626;
+  --color-warning: #d97706;
+
+  /* Typography */
+  --font-primary: "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+}
+
 :root {
-  /* Base colors*/
-  --color-bg:#f0f1f1;
-  --color-text: #000000;
-  --color-subtle: #535353;
-  --color-border: rgba(0, 0, 0, 0.1);
-  --color-yellow-500: #eab308;
-  --color-highlight: #eab308;
-  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+  --spacing-section: 128px;
 
-  /* Buttons, pills, links */           
-  --color-link: var(--color-text);   
-  --color-link-hover: #ffffff;
+  /* Layout */
+  --layout-max-width: 1200px;
+  --layout-reading-width: 720px;
+  --layout-page-padding: 24px;
+  --layout-header-offset: 80px;
 
-  --color-bg-pill: rgba(0, 0, 0, 0.06);       
-  --color-bg-pill-hover: rgba(0, 0, 0, 0.11);
-  --color-bg-pill-active: rgba(0, 0, 0, 0.16);
+  /* Type scale: <size> / <line-height> / <letter-spacing> */
+  --text-display-xl: 64px;
+  --text-display-xl-lh: 68px;
+  --text-display-xl-ls: -3.2px;
+  --text-display-lg: 48px;
+  --text-display-lg-lh: 52px;
+  --text-display-lg-ls: -2.4px;
+  --text-heading-lg: 32px;
+  --text-heading-lg-lh: 38px;
+  --text-heading-lg-ls: -1.4px;
+  --text-heading-md: 24px;
+  --text-heading-md-lh: 32px;
+  --text-heading-md-ls: -1px;
+  --text-body-lg: 18px;
+  --text-body-lg-lh: 30px;
+  --text-body-lg-ls: 0;
+  --text-body-md: 16px;
+  --text-body-md-lh: 26px;
+  --text-body-md-ls: 0;
+  --text-body-sm: 14px;
+  --text-body-sm-lh: 21px;
+  --text-body-sm-ls: 0;
+  --text-caption: 12px;
+  --text-caption-lh: 18px;
+  --text-caption-ls: 0;
 
-  /* Navbar animation background + border */
-  --color-nav-bg-animated: rgba(255, 255, 255, 0.5); 
-  --color-nav-border: rgba(0, 0, 0, 0.1);
-  --color-theme-option-hover-bg: #e2e2e2;      
-  --color-theme-option-hover-text: #000000;
+  /* Selection */
+  --color-selection-bg: var(--color-accent);
+  --color-selection-text: var(--color-on-primary);
 
-  
+  /* Focus */
+  --color-ring: var(--color-accent);
+  --color-ring-offset: var(--color-canvas);
+
+  /* Legacy aliases — preserve existing component references.
+     These map old variable names to the new design tokens so that
+     no component has to change in this phase. */
+  --color-bg: var(--color-canvas);
+  --color-text: var(--color-ink);
+  --color-subtle: var(--color-body);
+  --color-border: var(--color-hairline);
+  --color-link: var(--color-ink);
+  --color-link-hover: var(--color-accent);
+
+  --color-bg-pill: rgba(23, 23, 23, 0.05);
+  --color-bg-pill-hover: rgba(23, 23, 23, 0.09);
+  --color-bg-pill-active: rgba(23, 23, 23, 0.13);
+
+  --color-border-hover: var(--color-hairline);
+  --color-bg-hover: var(--color-canvas-soft);
+
+  --color-nav-text: var(--color-ink);
+  --color-nav-bg-animated: rgba(255, 255, 255, 0.7);
+  --color-nav-border: var(--color-hairline);
+
+  --color-theme-option-hover-bg: var(--color-canvas-soft);
+  --color-theme-option-hover-text: var(--color-ink);
+
+  --color-highlight: var(--color-accent-soft);
+  --color-yellow-500: var(--color-warning);
+  --color-yellow-200: #fef3c7;
 }
 
-html {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  --font-mono: 'Geist Mono Variable', monospace, system-ui;
-  --font-serif: 'EB Garamond Variable', serif;
-
-  font-family: var(--font-mono);
-  transition: background-color 0.3s, color 0.3s;
-}
+/* =============================================================================
+   Dark theme
+   ============================================================================= */
 
 html.dark {
-  --color-bg: #000000;
-  --color-text: #ffffff;
-  --color-subtle: #a0a0a0;
-  --color-border: rgba(255, 255, 255, 0.3);
-  --color-yellow-500: #facc15;
-  --color-yellow-200: #fde68a;
-  --color-highlight: #fde68a;
+  --color-primary: #f5f5f5;
+  --color-on-primary: #0a0a0a;
+  --color-ink: #f5f5f5;
+  --color-body: #a3a3a3;
+  --color-mute: #737373;
+  --color-canvas: #0a0a0a;
+  --color-canvas-soft: #141414;
+  --color-hairline: #262626;
+  --color-accent: #22c55e;
+  --color-accent-deep: #16a34a;
+  --color-accent-soft: #052e16;
 
-  --color-link: #ffffff;
-  --color-link-hover: #000000;
+  --color-bg: var(--color-canvas);
+  --color-text: var(--color-ink);
+  --color-subtle: var(--color-body);
+  --color-border: var(--color-hairline);
+  --color-link: var(--color-ink);
+  --color-link-hover: var(--color-accent);
 
-  --color-bg-pill: rgba(255, 255, 255, 0.08);
-  --color-bg-pill-hover: rgba(255, 255, 255, 0.14);
-  --color-bg-pill-active: rgba(255, 255, 255, 0.20);   
+  --color-bg-pill: rgba(255, 255, 255, 0.06);
+  --color-bg-pill-hover: rgba(255, 255, 255, 0.10);
+  --color-bg-pill-active: rgba(255, 255, 255, 0.14);
 
-  /* Navbar animation background + border for dark mode */
-  --color-nav-bg-animated: rgba(255, 255, 255, 0.05); 
-  --color-nav-border: rgba(255, 255, 255, 0.1);
-  --color-theme-option-hover-bg: #303030;      
-  --color-theme-option-hover-text: #f3f4f6; 
+  --color-border-hover: var(--color-hairline);
+  --color-bg-hover: #1a1a1a;
 
+  --color-nav-text: var(--color-ink);
+  --color-nav-bg-animated: rgba(10, 10, 10, 0.7);
+  --color-nav-border: var(--color-hairline);
+
+  --color-theme-option-hover-bg: #1f1f1f;
+  --color-theme-option-hover-text: var(--color-ink);
+
+  --color-highlight: var(--color-accent-soft);
+  --color-yellow-500: var(--color-warning);
+  --color-yellow-200: #422006;
+}
+
+/* =============================================================================
+   Base
+   ============================================================================= */
+
+html {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-canvas);
+  color: var(--color-body);
+  font-family: var(--font-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =============================================================================
+   Selection
+   ============================================================================= */
+
+::selection {
+  background-color: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+/* =============================================================================
+   Focus
+   ============================================================================= */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
 }

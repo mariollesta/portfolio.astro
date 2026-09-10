@@ -1,129 +1,167 @@
 ---
-import Sun from "@/components/icons/Sun.astro"
-import Moon from "@/components/icons/Moon.astro"
-import System from "@/components/icons/System.astro"
-
-const THEMES = ["Claro", "Oscuro", "Sistema"]
+// Icons are inserted at runtime by the inline script below so that exactly
+// one SVG (Sun or Moon) is in the DOM at any given time.
 ---
 
-<div class="relative ml-1 mr-1">
-    <button
-        transition:persist
-        id="theme-toggle-btn"
-        class="appearance-none border-none flex hover:scale-125 transition"
-    >
-        <span class="sr-only">Elige el tema</span>
-        <Sun id="light" class="theme-toggle-icon size-5 transition-all" />
-        <Moon id="dark" class="theme-toggle-icon absolute size-5 transition-all" />
-        <System id="system" class="theme-toggle-icon absolute size-5 transition-all" />
-    </button>
+<button
+    id="theme-toggle-btn"
+    class="theme-toggle"
+    type="button"
+    aria-label="Cambiar a modo oscuro"
+>
+    <span
+        id="theme-toggle-icon"
+        class="theme-toggle__icon"
+        aria-hidden="true"
+    ></span>
+</button>
 
-    <div
-        transition:persist
-        id="themes-menu"
-        class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md bg-[var(--color-bg-pill)] shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
-    >
-        <ul>
-        {
-            THEMES.map((theme) => (
-            <li
-                class="themes-menu-option px-2 py-1.5 cursor-default rounded-sm transition-colors hover:bg-[var(--color-theme-option-hover-bg)] hover:text-[var(--color-theme-option-hover-text)]"
-            >
-                {theme}
-            </li>
-            ))
-        }
-        </ul>
-    </div>
-</div>
+<script is:inline>
+    (() => {
+        const STORAGE_KEY = "theme";
+        const VALID_THEMES = new Set(["light", "dark"]);
+        const DEFAULT_THEME = "light";
 
+        // SVG markup inlined from Sun.astro and Moon.astro so the script can
+        // render exactly one icon by setting wrapper.innerHTML. The icon
+        // components themselves remain untouched.
+        const SUN_SVG =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></svg>';
+
+        const MOON_SVG =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/></svg>';
+
+        const readStoredTheme = () => {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                return VALID_THEMES.has(stored) ? stored : DEFAULT_THEME;
+            } catch {
+                return DEFAULT_THEME;
+            }
+        };
+
+        const writeStoredTheme = (theme) => {
+            try {
+                localStorage.setItem(STORAGE_KEY, theme);
+            } catch {
+                /* storage may be unavailable (private mode, quota) — ignore */
+            }
+        };
+
+        const applyTheme = (theme) => {
+            document.documentElement.classList.toggle(
+                "dark",
+                theme === "dark",
+            );
+        };
+
+        const updateLabel = (theme) => {
+            const btn = document.getElementById("theme-toggle-btn");
+            if (btn) {
+                btn.setAttribute(
+                    "aria-label",
+                    theme === "dark"
+                        ? "Cambiar a modo claro"
+                        : "Cambiar a modo oscuro",
+                );
+            }
+        };
+
+        // Conditional rendering: exactly one SVG ends up in the DOM at a time.
+        // No `display: none`, no absolute positioning, no overlapping icons.
+        const renderIcon = (theme) => {
+            const wrapper = document.getElementById("theme-toggle-icon");
+            if (!wrapper) return;
+            wrapper.innerHTML = theme === "dark" ? SUN_SVG : MOON_SVG;
+        };
+
+        const toggleTheme = () => {
+            const next = readStoredTheme() === "dark" ? "light" : "dark";
+            writeStoredTheme(next);
+            applyTheme(next);
+            updateLabel(next);
+            renderIcon(next);
+        };
+
+        const init = () => {
+            const theme = readStoredTheme();
+            applyTheme(theme);
+            updateLabel(theme);
+            renderIcon(theme);
+
+            const btn = document.getElementById("theme-toggle-btn");
+            if (btn && !btn.dataset.themeBound) {
+                btn.addEventListener("click", toggleTheme);
+                btn.dataset.themeBound = "true";
+            }
+        };
+
+        init();
+        document.addEventListener("astro:page-load", init);
+    })();
+</script>
 
 <style>
-    #themes-menu.open {
-        display: inline;
-        animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        appearance: none;
+        background: transparent;
+        border: none;
+        font: inherit;
+        color: var(--color-body);
+        cursor: pointer;
+        border-radius: var(--radius-sm);
+        transition: color 0.15s ease;
     }
 
-    @keyframes scale-up-center {
-        from {
-            transform: scale(0.8);
-            opacity: 0;
-        }
+    .theme-toggle:hover {
+        color: var(--color-accent);
+    }
 
+    .theme-toggle:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+    }
+
+    .theme-toggle__icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
+    }
+
+    /* Subtle entrance animation for the single SVG the JS inserts on each
+       theme change (and on initial load). Short fade + very subtle rotation.
+       animation-fill-mode: backwards ensures the SVG renders with its `from`
+       state (opacity 0, rotated) before the animation actually starts, so the
+       fade is never skipped by a first-paint flash. */
+    .theme-toggle__icon > svg {
+        animation: theme-icon-enter 0.18s ease-out backwards;
+        transform-origin: center;
+    }
+
+    @keyframes theme-icon-enter {
+        from {
+            opacity: 0;
+            transform: rotate(-18deg);
+        }
         to {
-            transform: scale(1);
             opacity: 1;
+            transform: rotate(0deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .theme-toggle__icon > svg {
+            animation: none;
         }
     }
 </style>
-
-<script is:inline>
-    let remove = null
-    const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-    const themesMenu = document.getElementById("themes-menu")
-
-    const getThemePreference = () => {
-        if (typeof localStorage !== "undefined") {
-        return localStorage.getItem("theme") ?? "system"
-        }
-
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-    }
-
-    const updateIcon = (themePreference) => {
-        document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-        element.style.scale = element.id === themePreference ? "1" : "0"
-        })
-    }
-
-    const updateTheme = () => {
-        if (remove != null) {
-            remove()
-        }
-        matchMedia.addEventListener("change", updateTheme)
-        remove = () => {
-            matchMedia.removeEventListener("change", updateTheme)
-        }
-
-        const themePreference = getThemePreference()
-        const isDark =
-        themePreference === "dark" ||
-        (themePreference === "system" && matchMedia.matches)
-
-        updateIcon(themePreference)
-        document.documentElement.classList[isDark ? "add" : "remove"]("dark")
-        console.log("Applying theme:", themePreference);
-        console.log("documentElement.classList", document.documentElement.classList);
-    }
-
-    updateTheme()
-
-    document.addEventListener("click", () => themesMenu.classList.remove("open"))
-
-    document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-        e.stopPropagation()
-        const isClosed = !themesMenu.classList.contains("open")
-        themesMenu.classList[isClosed ? "add" : "remove"]("open")
-    })
-
-    document.querySelectorAll(".themes-menu-option").forEach((element) => {
-        element.addEventListener("click", (e) => {
-            const themeText = e.target.innerText.toLowerCase().trim()
-            // Map theme text to storage values
-            const themeMap = {
-                'claro': 'light',
-                'oscuro': 'dark',
-                'sistema': 'system'
-            }
-            localStorage.setItem("theme", themeMap[themeText])
-            updateTheme()
-        })
-    })
-
-    document.addEventListener('astro:after-swap', () => {
-        updateTheme();
-        window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
-    })
-</script>

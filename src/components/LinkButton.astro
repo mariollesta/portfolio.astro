@@ -3,10 +3,55 @@ const { href } = Astro.props;
 ---
 
 <a
-    target="_blank"
     href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     role="link"
-    class="inline-flex items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition rounded-md text-[var(--color-link)] bg-[var(--color-bg-pill)] hover:bg-[var(--color-bg-pill-hover)] focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-2 active:bg-[var(--color-bg-pill-active)] max-w-fit"
+    class="link-button"
 >
     <slot />
 </a>
+
+<style>
+    .link-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: var(--font-primary);
+        font-size: var(--text-body-sm);
+        line-height: var(--text-body-sm-lh);
+        font-weight: 500;
+        color: var(--color-ink);
+        background-color: var(--color-canvas);
+        border: 1px solid var(--color-hairline);
+        border-radius: var(--radius-md);
+        padding: 10px 16px;
+        text-decoration: none;
+        cursor: pointer;
+        max-width: fit-content;
+        transition:
+            background-color 0.15s ease,
+            color 0.15s ease,
+            border-color 0.15s ease;
+    }
+
+    .link-button:hover {
+        border-color: var(--color-accent);
+    }
+
+    .link-button:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+    }
+
+    .link-button:active {
+        background-color: var(--color-canvas-soft);
+    }
+
+    .link-button svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+    }
+</style>
