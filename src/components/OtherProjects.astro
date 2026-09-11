@@ -6,21 +6,25 @@ import Link from "@/components/icons/Link.astro";
 
 const OTHER_PROJECTS = [
     {
+        title: "The One Piece Theme",
+        description: "Clean and dark themes inspired by One Piece for Visual Studio Code.",
+        github: "https://github.com/mariollesta/the-one-piece-theme",
+    },
+    {
         title: "country explorer",
-        description: "Aplicación web minimalista para explorar información sobre países de todo el mundo.",
+        description: "A minimalist web application to explore information about countries around the world.",
         github: "https://github.com/mariollesta/country-explorer",
         link: "https://country-explorer.vercel.app/",
     },
     {
         title: "loadingVI",
-        description:
-        "Contador en tiempo real de la fecha de lanzamiento de Grand Theft Auto VI.",
+        description: "Real-time counter for the release date of Grand Theft Auto VI.",
         github: "https://github.com/mariollesta/loadingVI",
         link: "https://loadingvi.com",
     },
     {
         title: "cli-wordcount",
-        description: "Mi propia versión de la herramienta de línea de comandos de Unix «wc».",
+        description: "Python version of the Unix «wc» command-line tool.",
         github: "https://github.com/mariollesta/cli-wordcount",
     },
 
@@ -109,7 +113,6 @@ const OTHER_PROJECTS = [
         position: relative;
     }
 
-    /* Carousel track */
     .other-projects__carousel {
         display: flex;
         gap: var(--spacing-lg);
@@ -124,10 +127,8 @@ const OTHER_PROJECTS = [
         display: none;
     }
 
-    /* Project card */
     .other-projects__card {
-        flex: 0 0 85%;
-        min-width: 280px;
+        flex: 0 0 100%;
         display: flex;
         flex-direction: column;
         gap: var(--spacing-xs);
@@ -141,18 +142,18 @@ const OTHER_PROJECTS = [
 
     @media (min-width: 768px) {
         .other-projects__card {
-            flex: 0 0 calc((100% - 2 * var(--spacing-lg)) / 3);
+            flex: 0 0 calc((100% - 2 * var(--spacing-lg)) / 2);
         }
     }
 
     .other-projects__card:hover {
-        border-color: var(--color-accent);
+        border-color: var(--color-primary);
     }
 
     .other-projects__card-title {
         font-family: var(--font-primary);
         font-weight: 600;
-        font-size: var(--text-body-lg);
+        font-size: var(--text-body-md);
         line-height: var(--text-body-lg-lh);
         color: var(--color-ink);
         margin: 0;
@@ -160,7 +161,7 @@ const OTHER_PROJECTS = [
 
     .other-projects__card-description {
         font-family: var(--font-primary);
-        font-size: var(--text-body-md);
+        font-size: var(--text-body-sm);
         line-height: var(--text-body-md-lh);
         color: var(--color-body);
         margin: 0;
@@ -174,7 +175,6 @@ const OTHER_PROJECTS = [
         margin-top: var(--spacing-sm);
     }
 
-    /* Carousel controls */
     .other-projects__controls {
         display: flex;
         justify-content: flex-end;
@@ -201,11 +201,11 @@ const OTHER_PROJECTS = [
 
     .other-projects__btn:hover:not(:disabled) {
         border-color: var(--color-ink);
-        color: var(--color-accent);
+        color: var(--color-primary);
     }
 
     .other-projects__btn:focus-visible {
-        outline: 2px solid var(--color-accent);
+        outline: 2px solid var(--color-primary);
         outline-offset: 2px;
     }
 
@@ -222,7 +222,6 @@ const OTHER_PROJECTS = [
 
     const scrollByCard = () => {
         const card = slider.querySelector("article") as HTMLElement;
-        // Card width + gap (--spacing-lg = 24px)
         return card ? card.offsetWidth + 24 : 280;
     };
 

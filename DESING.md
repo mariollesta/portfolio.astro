@@ -20,9 +20,9 @@
 | canvas      | `#ffffff` | `--color-canvas`      | main background               |
 | canvas soft | `#fafafa` | `--color-canvas-soft` | subtle sections               |
 | hairline    | `#eaeaea` | `--color-hairline`    | borders and dividers          |
-| accent      | `#16a34a` | `--color-accent`      | brand accent and interactions |
-| accent deep | `#15803d` | `--color-accent-deep` | accent hover state            |
-| accent soft | `#dcfce7` | `--color-accent-soft` | subtle accent backgrounds     |
+| accent      | `#16a34a` | `--color-primary`      | brand accent and interactions |
+| accent deep | `#15803d` | `--color-primary-deep` | accent hover state            |
+| accent soft | `#dcfce7` | `--color-primary-soft` | subtle accent backgrounds     |
 | error       | `#dc2626` | `--color-error`       | error states                  |
 | warning     | `#d97706` | `--color-warning`     | warning states                |
 

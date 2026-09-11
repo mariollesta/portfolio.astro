@@ -8,7 +8,6 @@ interface Props {
 
 const { title, company, date, description } = Astro.props;
 
-// "Marzo 2025 - Actualmente..." — only entry whose date contains "actual"
 const isCurrent = date.toLowerCase().includes("actual");
 ---
 
@@ -17,9 +16,9 @@ const isCurrent = date.toLowerCase().includes("actual");
 
     <div class="experience-item__grid">
         <div class="experience-item__meta">
+            <time class="experience-item__date">{date}</time>
             <h3 class="experience-item__title">{title}</h3>
             <p class="experience-item__company">{company}</p>
-            <time class="experience-item__date">{date}</time>
         </div>
 
         <div class="experience-item__description">{description}</div>
@@ -33,7 +32,6 @@ const isCurrent = date.toLowerCase().includes("actual");
         padding-bottom: var(--spacing-2xl);
     }
 
-    /* Vertical timeline line */
     .experience-item::before {
         content: "";
         position: absolute;
@@ -44,7 +42,6 @@ const isCurrent = date.toLowerCase().includes("actual");
         background-color: var(--color-hairline);
     }
 
-    /* Marker dot, centered on the line */
     .experience-item__marker {
         position: absolute;
         left: 0;
@@ -56,12 +53,10 @@ const isCurrent = date.toLowerCase().includes("actual");
         transform: translateX(-50%);
     }
 
-    /* Current/most recent experience: restrained single use of accent */
     .experience-item--current .experience-item__marker {
-        background-color: var(--color-accent);
+        background-color: var(--color-primary);
     }
 
-    /* Single column on mobile, two columns on tablet+ */
     .experience-item__grid {
         display: grid;
         gap: var(--spacing-xs);
@@ -81,36 +76,30 @@ const isCurrent = date.toLowerCase().includes("actual");
         gap: var(--spacing-xs);
     }
 
-    /* Title: heading scale, strongest non-description text */
     .experience-item__title {
         font-family: var(--font-primary);
         font-weight: 600;
-        font-size: var(--text-heading-md);
-        line-height: var(--text-heading-md-lh);
-        letter-spacing: var(--text-heading-md-ls);
+        font-size: var(--text-body-md);
+        line-height: var(--text-body-sm-lh);
         color: var(--color-ink);
         margin: 0;
     }
 
-    /* Company: same size as description, distinguished by color */
     .experience-item__company {
         font-family: var(--font-primary);
         font-size: var(--text-body-md);
+        color: var(--color-mute);
+        margin: 0;
+    }
+
+    .experience-item__date {
+        font-family: var(--font-mono);
+        font-size: var(--text-caption);
         line-height: var(--text-body-md-lh);
         color: var(--color-mute);
         margin: 0;
     }
 
-    /* Date: small mono metadata */
-    .experience-item__date {
-        font-family: var(--font-mono);
-        font-size: var(--text-caption);
-        line-height: var(--text-caption-lh);
-        color: var(--color-mute);
-        margin: 0;
-    }
-
-    /* Description */
     .experience-item__description {
         display: flex;
         flex-direction: column;
@@ -122,11 +111,7 @@ const isCurrent = date.toLowerCase().includes("actual");
         margin: 0;
         text-wrap: pretty;
     }
-
-    /* Remove trailing padding from the last item.
-       The :global() escapes Astro's scoping so the <li> selector
-       (rendered by Experience.astro) matches the parent of the
-       last .experience-item, keeping the section rhythm clean. */
+    
     :global(li:last-child) .experience-item {
         padding-bottom: 0;
     }

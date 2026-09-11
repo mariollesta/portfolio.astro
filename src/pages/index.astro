@@ -5,14 +5,14 @@ import SectionContainer from "@/components/SectionContainer.astro"
 import SectionTitle from "@/components/SectionTitle.astro"
 import Hero from "@/components/Hero.astro"
 import Experience from "@/components/Experience.astro"
-import Projects from "@/components/Projects.astro"
+import FeaturedProjects from "@/components/FeaturedProjects.astro"
 import OtherProjects from "@/components/OtherProjects.astro"
 import Education from "@/components/Education.astro"
 import AboutMe from "@/components/AboutMe.astro"
 ---
 
 <BaseLayout 
-	pageTitle="Portfolio de mariollesta" 
+	pageTitle="Mario @mariollesta" 
 	description="Portfolio personal de mariollesta, desarrollador web con experiencia en tecnologías modernas."
 >
 	<main>
@@ -21,27 +21,27 @@ import AboutMe from "@/components/AboutMe.astro"
 		</SectionContainer>
 
 		<SectionContainer id="projects">
-			<SectionTitle>Proyectos</SectionTitle>
-			<Projects />
+			<SectionTitle>Featured</SectionTitle>
+			<FeaturedProjects />
 		</SectionContainer>
 		
 		<SectionContainer id="other-projects">
-			<SectionTitle>Otros proyectos</SectionTitle>
+			<SectionTitle>Other Works</SectionTitle>
 			<OtherProjects />
 		</SectionContainer>
 
 		<SectionContainer id="experience">
-			<SectionTitle>Experiencia</SectionTitle>
+			<SectionTitle>Experience</SectionTitle>
 			<Experience />
 		</SectionContainer>
 
 		<SectionContainer id="education">
-			<SectionTitle>Formación</SectionTitle>
+			<SectionTitle>Education</SectionTitle>
 			<Education />
 		</SectionContainer>
 
 		<SectionContainer id="about-me">
-			<SectionTitle>Sobre mí</SectionTitle>
+			<SectionTitle>About Me</SectionTitle>
 			<AboutMe />
 		</SectionContainer>
 	</main>

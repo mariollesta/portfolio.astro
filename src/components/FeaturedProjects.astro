@@ -32,13 +32,6 @@ const PROJECTS = [
         image: "/projects/wins.webp",
         tags: [TAGS.JAVASCRIPT, TAGS.REACT, TAGS.CSS, TAGS.VERCEL],
     },
-    {
-        title: "The One Piece Theme",
-        description: "Temas limpios y oscuros inspirados en One Piece para Visual Studio Code.",
-        github: "https://github.com/mariollesta/the-one-piece-theme",
-        image: "/projects/the-one-piece-theme.webp",
-        tags: [TAGS.VSCODE],
-    },
 ];
 ---
 
@@ -93,7 +86,6 @@ const PROJECTS = [
         gap: var(--spacing-3xl);
     }
 
-    /* Two-column layout: image | info. Stacks on mobile. */
     .project {
         display: grid;
         grid-template-columns: 1fr;
@@ -108,7 +100,6 @@ const PROJECTS = [
         }
     }
 
-    /* Image: clean presentation, hairline border, radius-lg, no shadows */
     .project__image {
         width: 100%;
         aspect-ratio: 4 / 3;
@@ -128,14 +119,13 @@ const PROJECTS = [
     }
 
     .project__image:hover {
-        border-color: var(--color-accent);
+        border-color: var(--color-primary);
     }
 
     .project__image:hover img {
         transform: scale(1.02);
     }
 
-    /* Info column */
     .project__info {
         display: flex;
         flex-direction: column;
@@ -148,7 +138,6 @@ const PROJECTS = [
         }
     }
 
-    /* Title: heading-md */
     .project__title {
         font-family: var(--font-primary);
         font-weight: 600;
@@ -159,7 +148,6 @@ const PROJECTS = [
         margin: 0;
     }
 
-    /* Tags: neutral treatment, mono, all uniform */
     .project__tags {
         display: flex;
         flex-wrap: wrap;
@@ -199,7 +187,6 @@ const PROJECTS = [
         text-wrap: pretty;
     }
 
-    /* Actions: LinkButton, icons normalized to 14px */
     .project__actions {
         display: flex;
         flex-wrap: wrap;

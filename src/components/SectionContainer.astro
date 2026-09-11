@@ -12,8 +12,9 @@ const { class: className, id } = Astro.props;
 
 <style>
     .section {
+        box-sizing: border-box;
         width: 100%;
-        max-width: var(--layout-max-width);
+        max-width: var(--layout-reading-width);
         margin-inline: auto;
         padding-inline: var(--layout-page-padding);
         padding-block: var(--spacing-2xl);

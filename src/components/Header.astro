@@ -3,22 +3,22 @@ import ThemeToggle from "@/components/ThemeToggle.astro"
 
 const navItems = [
     {
-        title: "Proyectos",
+        title: "Projects",
         label: "projects",
         url: "/#projects",
     },
     {
-        title: "Experiencia",
+        title: "Experience",
         label: "experience",
         url: "/#experience",
     },
     {
-        title: "Formación",
+        title: "Education",
         label: "education",
         url: "/#education",
     },
     {
-        title: "Sobre mí",
+        title: "About Me",
         label: "about-me",
         url: "/#about-me",
     },
@@ -28,8 +28,8 @@ const navItems = [
 <header class="header">
     <div class="header__inner">
         <a class="header__brand" href="/" aria-label="Inicio">
-            <img src="/profile.webp" alt="Mario Llesta" class="header__avatar" width="32" height="32" />
-        </a>
+                <span class="header__logo" aria-hidden="true">m</span>
+            </a>
 
         <nav class="header__nav">
             {
@@ -118,7 +118,7 @@ const navItems = [
     }
 
     .header__brand {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
@@ -126,21 +126,30 @@ const navItems = [
     }
 
     .header__brand:focus-visible {
-        outline: 2px solid var(--color-accent);
+        outline: 2px solid var(--color-ring);
         outline-offset: 4px;
     }
 
-    .header__avatar {
+    .header__logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         width: 36px;
         height: 36px;
         border-radius: var(--radius-pill);
-        object-fit: cover;
+        background-color: var(--color-canvas-soft);
         border: 1px solid var(--color-hairline);
-        transition: border-color 0.15s ease;
+        color: var(--color-ink);
+        font-family: var(--font-mono);
+        font-size: var(--text-body-md);
+        font-weight: 700;
+        line-height: 1;
+        user-select: none;
+        transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
     }
 
-    .header__brand:hover .header__avatar {
-        border-color: var(--color-mute);
+    .header__brand:hover .header__logo {
+        color: var(--color-primary);
     }
 
     .header__nav {
@@ -172,15 +181,15 @@ const navItems = [
     }
 
     .header__nav-link.is-active {
-        color: var(--color-accent);
+        color: var(--color-primary);
         text-decoration: underline;
-        text-decoration-color: var(--color-accent);
+        text-decoration-color: var(--color-primary);
         text-decoration-thickness: 1px;
         text-underline-offset: 4px;
     }
 
     .header__nav-link:focus-visible {
-        outline: 2px solid var(--color-accent);
+        outline: 2px solid var(--color-primary);
         outline-offset: 2px;
     }
 

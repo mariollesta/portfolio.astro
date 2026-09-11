@@ -25,16 +25,6 @@ export default {
                 error: "#dc2626",
                 warning: "#d97706",
             },
-            fontFamily: {
-                primary: ["Inter", "system-ui", "sans-serif"],
-                mono: [
-                    "ui-monospace",
-                    "SFMono-Regular",
-                    "Menlo",
-                    "Monaco",
-                    "monospace",
-                ],
-            },
             borderRadius: {
                 sm: "6px",
                 md: "8px",

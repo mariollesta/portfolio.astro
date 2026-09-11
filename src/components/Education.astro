@@ -2,13 +2,13 @@
 import GraduationCap from "@/components/icons/GraduationCap.astro";
 
 const EDUCATION = [
-  {
-    title: "Grado en Ingeniería en Tecnologías de Telecomunicación",
-    institution: "Universidad Carlos III de Madrid",
-    grade: "7.0",
-    period: "2018 – 2022",
-    link: "https://www.uc3m.es/grado/telecomunicacion",
-  },
+    {
+        title: "Bachelor's Degree in Telecommunications Engineering",
+        institution: "Carlos III University of Madrid",
+        grade: "7.0",
+        period: "2018 – 2022",
+        link: "https://www.uc3m.es/grado/telecomunicacion",
+    },
 ]
 ---
 
@@ -43,8 +43,6 @@ const EDUCATION = [
 </div>
 
 <style>
-    /* Stacked on mobile (clean, prevents right-column squeeze on long titles),
-       side-by-side on desktop. */
     .education-entry {
         display: flex;
         flex-direction: column;
@@ -60,7 +58,6 @@ const EDUCATION = [
         }
     }
 
-    /* Main column: icon + title + institution */
     .education-entry__main {
         display: flex;
         align-items: flex-start;
@@ -80,7 +77,6 @@ const EDUCATION = [
         gap: var(--spacing-xs);
     }
 
-    /* Title (the link) */
     .education-entry__link {
         display: inline-block;
         text-decoration: none;
@@ -102,16 +98,15 @@ const EDUCATION = [
 
     .education-entry__link:hover .education-entry__title,
     .education-entry__link:focus-visible .education-entry__title {
-        text-decoration-color: var(--color-accent);
+        text-decoration-color: var(--color-primary);
     }
 
     .education-entry__link:focus-visible {
-        outline: 2px solid var(--color-accent);
+        outline: 2px solid var(--color-primary);
         outline-offset: 4px;
         border-radius: 4px;
     }
 
-    /* Institution: secondary, readable */
     .education-entry__institution {
         font-family: var(--font-primary);
         font-size: var(--text-body-sm);
@@ -120,7 +115,6 @@ const EDUCATION = [
         margin: 0;
     }
 
-    /* Meta column: period + grade, right-aligned on desktop */
     .education-entry__meta {
         display: flex;
         flex-direction: column;
@@ -148,7 +142,6 @@ const EDUCATION = [
         color: var(--color-mute);
     }
 
-    /* Grade value: slightly stronger emphasis, no badge/pill */
     .education-entry__grade-value {
         color: var(--color-ink);
         font-weight: 500;

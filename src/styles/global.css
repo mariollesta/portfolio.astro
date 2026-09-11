@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import '@fontsource-variable/grandstander/wght.css';
+@import '@fontsource-variable/roboto-mono/wght.css';
+
 
 /* =============================================================================
    Design tokens (DESING.md)
@@ -18,15 +21,12 @@
   --color-canvas: #ffffff;
   --color-canvas-soft: #fafafa;
   --color-hairline: #eaeaea;
-  --color-accent: #16a34a;
-  --color-accent-deep: #15803d;
-  --color-accent-soft: #dcfce7;
   --color-error: #dc2626;
   --color-warning: #d97706;
 
   /* Typography */
-  --font-primary: "Inter", system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --font-primary: 'Grandstander Variable', system-ui;
+  --font-mono: "Roboto Mono", monospace;
 
   /* Border radius */
   --radius-sm: 6px;
@@ -80,22 +80,19 @@
   --text-caption-ls: 0;
 
   /* Selection */
-  --color-selection-bg: var(--color-accent);
+  --color-selection-bg: var(--color-primary);
   --color-selection-text: var(--color-on-primary);
 
   /* Focus */
-  --color-ring: var(--color-accent);
+  --color-ring: var(--color-primary);
   --color-ring-offset: var(--color-canvas);
 
-  /* Legacy aliases — preserve existing component references.
-     These map old variable names to the new design tokens so that
-     no component has to change in this phase. */
   --color-bg: var(--color-canvas);
   --color-text: var(--color-ink);
   --color-subtle: var(--color-body);
   --color-border: var(--color-hairline);
   --color-link: var(--color-ink);
-  --color-link-hover: var(--color-accent);
+  --color-link-hover: var(--color-primary);
 
   --color-bg-pill: rgba(23, 23, 23, 0.05);
   --color-bg-pill-hover: rgba(23, 23, 23, 0.09);
@@ -111,13 +108,13 @@
   --color-theme-option-hover-bg: var(--color-canvas-soft);
   --color-theme-option-hover-text: var(--color-ink);
 
-  --color-highlight: var(--color-accent-soft);
+  --color-highlight: var(--color-primary-soft);
   --color-yellow-500: var(--color-warning);
   --color-yellow-200: #fef3c7;
 }
 
 /* =============================================================================
-   Dark theme
+    Dark theme
    ============================================================================= */
 
 html.dark {
@@ -129,16 +126,13 @@ html.dark {
   --color-canvas: #0a0a0a;
   --color-canvas-soft: #141414;
   --color-hairline: #262626;
-  --color-accent: #22c55e;
-  --color-accent-deep: #16a34a;
-  --color-accent-soft: #052e16;
 
   --color-bg: var(--color-canvas);
   --color-text: var(--color-ink);
   --color-subtle: var(--color-body);
   --color-border: var(--color-hairline);
   --color-link: var(--color-ink);
-  --color-link-hover: var(--color-accent);
+  --color-link-hover: var(--color-primary);
 
   --color-bg-pill: rgba(255, 255, 255, 0.06);
   --color-bg-pill-hover: rgba(255, 255, 255, 0.10);
@@ -154,7 +148,7 @@ html.dark {
   --color-theme-option-hover-bg: #1f1f1f;
   --color-theme-option-hover-text: var(--color-ink);
 
-  --color-highlight: var(--color-accent-soft);
+  --color-highlight: var(--color-primary-soft);
   --color-yellow-500: var(--color-warning);
   --color-yellow-200: #422006;
 }
